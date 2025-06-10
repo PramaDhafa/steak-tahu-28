@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Steak Tahu 28 - Shop Your Favorite Plant-Based Steak</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --color-primary: #d9480f;
+      --color-primary-dark: #a13607;
+      --color-secondary: #f97316;
+      --color-text-primary: #111827;
+      --color-text-secondary: #6b7280;
+      --color-bg: #ffffff;
+      --color-card-bg: #f1eaeaec;
+      --border-radius: 0.75rem;
+      --shadow-light: 0 4px 8px rgba(0,0,0,0.05);
+      --shadow-hover: 0 8px 16px rgba(217, 72, 15, 0.2);
+      --transition-fast: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --max-content-width: 1200px;
+    }
+
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      font-size: 16px;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color var(--transition-fast);
+    }
+    a:focus,
+    a:hover {
+      color: var(--color-primary);
+      outline-offset: 2px;
+      outline: 2px solid var(--color-primary);
+      outline-radius: var(--border-radius);
+    }
+    button {
+      font-family: inherit;
+      font-size: 1rem;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      user-select: none;
+      transition: background-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+    }
+    button:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-hover);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--color-bg);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      z-index: 1000;
+    }
+    nav.container {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.75rem;
+      color: var(--color-primary);
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.75rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav li {
+      font-weight: 600;
+    }
+    nav li a {
+      border-bottom: 2px solid transparent;
+      padding-bottom: 0.125rem;
+      transition: border-color var(--transition-fast);
+    }
+    nav li a:hover,
+    nav li a:focus {
+      border-color: var(--color-primary);
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+      display: flex;
+      gap: 2.5rem;
+      position: relative;
+      flex-direction: column;
+    }
+
+    /* Hero Section */
+    .hero {
+      width: 100%;
+      max-width: 600px;
+      flex-shrink: 0;
+      margin-bottom: 4rem;
+    }
+    .hero h1 {
+      font-weight: 700;
+      font-size: clamp(3rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: var(--color-primary);
+    }
+    .hero p {
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero > button {
+      background-color: var(--color-primary);
+      color: white;
+      padding: 1rem 3rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+      user-select: none;
+    }
+    .hero > button:hover,
+    .hero > button:focus {
+      background-color: var(--color-primary-dark);
+      box-shadow: var(--shadow-hover);
+      outline: none;
+    }
+
+    /* Products Grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+      gap: 2.5rem;
+      margin-bottom: 5rem;
+    }
+    .product-card {
+      background-color: var(--color-card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+      user-select: none;
+    }
+    .product-card:focus-within,
+    .product-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+      outline: none;
+    }
+    .product-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+      user-select: none;
+    }
+    .product-content {
+      padding: 1.25rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      flex-grow: 1;
+    }
+    .product-title {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--color-primary-dark);
+      user-select: text;
+    }
+    .product-description {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      flex-grow: 1;
+      user-select: text;
+      line-height: 1.4;
+    }
+    .product-price {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--color-primary);
+    }
+    .product-btn {
+      margin-top: auto;
+      background-color: var(--color-secondary);
+      color: white;
+      padding: 0.65rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      cursor: pointer;
+      transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+      user-select: none;
+      text-align: center;
+    }
+    .product-btn:hover,
+    .product-btn:focus {
+      background-color: var(--color-primary-dark);
+      box-shadow: var(--shadow-hover);
+      outline: none;
+    }
+
+    /* Sections below products */
+    section.content-section {
+      background: var(--color-card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      padding: 4rem 3rem;
+      margin-bottom: 4rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      user-select: text;
+    }
+
+    section.content-section img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    section.content-section h2 {
+      font-weight: 800;
+      font-size: 3rem;
+      color: var(--color-primary);
+      margin-bottom: 1.25rem;
+      user-select: text;
+    }
+    section.content-section p {
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      font-size: 1.125rem;
+      line-height: 1.6;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      user-select: text;
+    }
+
+    /* Cart Sidebar */
+    .cart-sidebar {
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100vh;
+      width: 360px;
+      max-width: 100vw;
+      background: var(--color-bg);
+      box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+      border-left: 1px solid #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform var(--transition-fast);
+      z-index: 1500;
+      font-size: 16px;
+    }
+    .cart-sidebar.open {
+      transform: translateX(0);
+    }
+    .cart-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid #eee;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    header img {
+      height: 70px;
+      width: auto;
+      vertical-align: middle;
+    }
+    
+    .cart-close-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--color-primary-dark);
+      cursor: pointer;
+      line-height: 1;
+      user-select: none;
+      padding: 0;
+      transition: color var(--transition-fast);
+    }
+    .cart-close-btn:hover,
+    .cart-close-btn:focus {
+      color: var(--color-primary);
+      outline: none;
+    }
+    .cart-items {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 1rem 2rem 1rem 2rem;
+    }
+    .cart-empty {
+      color: var(--color-text-secondary);
+      font-style: italic;
+      text-align: center;
+      margin-top: 3rem;
+      user-select: none;
+      font-size: 1.125rem;
+    }
+
+    /* Each cart item */
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      user-select: none;
+      align-items: center;
+    }
+    
+    .cart-item-image {
+      width: 72px;
+      height: 54px;
+      border-radius: var(--border-radius);
+      object-fit: cover;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .cart-item-info {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .cart-item-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--color-primary-dark);
+      user-select: text;
+      margin-bottom: 0.4rem;
+    }
+    .cart-item-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      user-select: none;
+    }
+    .cart-item-quantity button {
+      background-color: transparent;
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 1.125rem;
+      padding: 0.3rem 0.75rem;
+      line-height: 1;
+      border: none;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      user-select: none;
+    }
+    .cart-item-quantity button:hover,
+    .cart-item-quantity button:focus {
+      background-color: var(--color-primary);
+      color: white;
+      outline: none;
+    }
+    .cart-item-quantity span {
+      display: inline-block;
+      min-width: 28px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      user-select: text;
+      font-size: 1.125rem;
+      padding: 0 0.5rem;
+      user-select: text;
+    }
+    .cart-item-remove {
+      background: transparent;
+      border: none;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+      padding: 0 0.25rem;
+      transition: color var(--transition-fast);
+      user-select: none;
+    }
+    .cart-item-remove:hover,
+    .cart-item-remove:focus {
+      color: var(--color-primary);
+      outline: none;
+    }
+    .cart-item-price {
+      font-weight: 700;
+      color: var(--color-primary);
+      font-size: 1.1rem;
+      user-select: text;
+      min-width: 90px;
+      text-align: right;
+    }
+
+    /* Cart Footer */
+    .cart-footer {
+      padding: 1.5rem 2rem;
+      border-top: 1px solid #eee;
+      user-select: none;
+    }
+    .cart-total {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 1.25rem;
+      color: var(--color-primary-dark);
+      display: flex;
+      justify-content: space-between;
+      user-select: none;
+    }
+    .cart-checkout-btn {
+      width: 100%;
+      padding: 1rem 0;
+      background-color: var(--color-primary);
+      color: white;
+      font-weight: 700;
+      font-size: 1.125rem;
+      border-radius: var(--border-radius);
+      user-select: none;
+      box-shadow: var(--shadow-light);
+      transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+      cursor: pointer;
+    }
+    .cart-checkout-btn:hover,
+    .cart-checkout-btn:focus {
+      background-color: var(--color-primary-dark);
+      box-shadow: var(--shadow-hover);
+      outline: none;
+    }
+
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-fast);
+      z-index: 1400;
+    }
+    .overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      main {
+        gap: 3rem;
+      }
+      .products {
+        grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      }
+      .cart-sidebar {
+        width: 100vw;
+        max-width: 100vw;
+      }
+      section.content-section {
+        padding: 3rem 2rem;
+        max-width: 90vw;
+      }
+    }
+    @media (max-width: 480px) {
+      nav.container {
+        padding: 1rem;
+        gap: 1rem;
+      }
+      nav ul {
+        gap: 1rem;
+      }
+      header {
+        font-size: 1rem;
+      }
+    }
+
+    /* Screen-reader only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+ .sold-out {
+      top: 12px;
+      left: 12px;
+      background-color: rgba(255, 0, 0, 0.85);
+      color: white;
+      padding: 6px 12px;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    footer {
+      background-color: #a81616;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Primary navigation">
+      <div class="logo" aria-label="Steak Tahu 28 Logo">Steak Tahu 28</div>
+       <img src="gambar steak tahu/stiker logo steak tahu 28 BLACKPAPER.png" alt="Logo Toko" />
+      <ul role="list">
+        <li><a href="#home" tabindex="0">Home</a></li>
+        <li><a href="#menu" tabindex="0">Menu</a></li>
+        <li><a href="#about" tabindex="0">Tentang</a></li>
+        <li><a href="#ranting" tabindex="0">Rating</a></li>
+        <li><a href="#lokasi" tabindex="0">Lokasi</a></li>
+        <li><a href="#contact" tabindex="0">Contact</a></li>
+      </ul>
+      <button id="cart-toggle" aria-label="Open shopping cart" aria-haspopup="dialog" aria-controls="cart-sidebar" aria-expanded="false" style="background:none;border:none;cursor:pointer;font-weight:700;font-size:1rem;color:var(--color-primary);">
+        Cart (<span id="cart-count">0</span>)
+      </button>
+      
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" role="region" aria-labelledby="hero-title">
+      <h1 id="hero-title">Nikmati Lezatnya Steak Tahu Premium!</h1>
+      <p>Pesan steak tahu kesukaan Anda dengan mudah melalui toko online kami. Lezat, sehat, dan siap memanjakan lidah Anda.</p>
+      <button id="hero-order-btn" aria-label="Go to menu section">Order Now</button>
+    </section>
+
+    <section class="products" id="menu" role="region" aria-labelledby="menu-title">
+      <h2 id="menu-title" class="sr-only">Our Menu</h2>
+
+      <article class="product-card" tabindex="0" role="group" aria-label="Classic Steak Tahu">
+        <img
+          src="gambar steak tahu/rasa blackpaper.png"
+          alt="Steak Tahu Rasa Blackpaper"
+          class="product-image"
+          loading="lazy"
+        />
+        <div class="product-content">
+          <h3 class="product-title">Steak Tahu Rasa Blackpaper</h3>
+          <p class="product-description">
+            Steak tahu rasa blackpepper enak. Pas buat yang suka aroma lada hitam yang kuat dan sedikit nendang.
+          </p>
+          <div class="product-price" aria-label="Price thirty five thousand rupiah">Rp20.000</div>
+          <button class="product-btn add-to-cart-btn" data-id="1" data-name="Classic Steak Tahu" data-price="20000" aria-label="Add Classic Steak Tahu to cart">
+            Add to Cart
+          </button>
+        </div>
+      </article>
+
+      <article class="product-card" tabindex="0" role="group" aria-label="Spicy Sambal Steak Tahu">
+        <img
+          src="gambar steak tahu/rasa keju.png"
+          alt="Steak Tahu Rasa Keju"
+          class="product-image"
+          loading="lazy"
+        />
+        <div class="product-content">
+          <h3 class="product-title">Steak Tahu Rasa Keju</h3>
+          <p class="product-description">
+            Steak tahu rasa keju itu creamy, cocok buat yang suka rasa lembut dan cheesy.
+          </p>
+          <div class="product-price" aria-label="Price thirty eight thousand rupiah">Rp25.000</div>
+          <div class="sold-out">Sold Out</div>
+          <button class="product-btn add-to-cart-btn" data-id="2" data-name="Spicy Sambal Steak Tahu" data-price="25000" aria-label="Add Spicy Sambal Steak Tahu to cart">
+            Add to Cart
+          </button>
+        </div>
+      </article>
+
+      <article class="product-card" tabindex="0" role="group" aria-label="Garlic Herb Steak Tahu">
+        <img
+          src="gambar steak tahu/rasa pedas.png"
+          alt="Steak Tahu Rasa Pedas"
+          class="product-image"
+          loading="lazy"
+        />
+        <div class="product-content">
+          <h3 class="product-title">Steak Tahu Rasa Pedas</h3>
+          <p class="product-description">
+            Steak tahu rasa pedas biasanya terasa hangat di lidah, dengan sentuhan cabai yang bikin nagih tanpa terlalu menyengat. Bikin tambah semangat makan!
+          </p>
+          <div class="product-price" aria-label="Price thirty seven thousand rupiah">Rp20.000</div>
+          <div class="sold-out">Sold Out</div>
+          <button class="product-btn add-to-cart-btn" data-id="3" data-name="Garlic Herb Steak Tahu" data-price="20000" aria-label="Add Garlic Herb Steak Tahu to cart">
+            Add to Cart
+          </button>
+        </div>
+      </article>
+
+      <article class="product-card" tabindex="0" role="group" aria-label="Teriyaki Steak Tahu">
+        <img
+          src="gambar steak tahu/rasa sapi.png"
+          alt="Steak Tahu Rasa Sapi"
+          class="product-image"
+          loading="lazy"
+        />
+        <div class="product-content">
+          <h3 class="product-title">Steak Tahu Rasa Sapi</h3>
+          <p class="product-description">
+            Steak tahu rasa sapi punya rasa gurih dan kaya seperti daging asli, dengan aroma khas steak sapi yang bikin makin lezat. Cocok buat yang ingin sensasi steak daging tapi pakai tahu.
+
+          <div class="product-price" aria-label="Price forty thousand rupiah">Rp35.000</div>
+          <div class="sold-out">Sold Out</div>
+          <button class="product-btn add-to-cart-btn" data-id="4" data-name="Teriyaki Steak Tahu" data-price="35000" aria-label="Add Teriyaki Steak Tahu to cart">
+            Add to Cart
+          </button>
+        </div>
+      </article>
+
+      <article class="product-card" tabindex="0" role="group" aria-label="Teriyaki Steak Tahu">
+        <img
+          src="gambar steak tahu/rasa ayam.png"
+          alt="Steak Tahu Rasa Ayam"
+          class="product-image"
+          loading="lazy"
+        />
+        <div class="product-content">
+          <h3 class="product-title">Steak Tahu Rasa Ayam</h3>
+          <p class="product-description">
+            Steak tahu rasa ayam terasa gurih dan ringan, mirip rasa daging ayam yang familiar, tapi lebih sehat dan lembut. Pas buat yang suka rasa ayam tapi pengen yang lebih simple.
+          <div class="product-price" aria-label="Price forty thousand rupiah">Rp30.000</div>
+          <div class="sold-out">Sold Out</div>
+          <button class="product-btn add-to-cart-btn" data-id="4" data-name="Teriyaki Steak Tahu" data-price="30000" aria-label="Add Teriyaki Steak Tahu to cart">
+            Add to Cart
+          </button>
+        </div>
+      </article>
+    </section>
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keranjang & Pembayaran</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      padding: 12px 0;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    
+
+    .item-name {
+      font-weight: bold;
+    }
+
+    .item-price {
+      color: #28a745;
+    }
+
+    .section-title {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .payment-method {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .payment-method:hover {
+      background-color: #f1f1f1;
+    }
+
+    .payment-method input {
+      margin-right: 12px;
+    }
+
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 8px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .checkout-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Keranjang Belanja</h2>
+
+    <!-- Keranjang Item -->
+    <div class="cart-item">
+      <div class="item-name">Steak Tahu Blackpaper</div>
+      <div class="item-price">Rp20.000</div>
+    </div>
+    <div class="cart-item">
+      <div class="item-name">Steak Tahu Rasa Keju</div>
+      <div class="item-price">Rp25.000</div>
+    </div>
+
+    <!-- Total -->
+    <div class="total">Total: Rp45.000</div>
+
+    <!-- Metode Pembayaran -->
+    <div class="section-title">Pilih Metode Pembayaran:</div>
+
+    <label class="payment-method">
+      <input type="radio" name="metode" value="transfer" required>
+      Transfer Bank (BCA, BNI, Mandiri)
+    </label>
+
+    <label class="payment-method">
+      <input type="radio" name="metode" value="ewallet">
+      E-Wallet (OVO, DANA, GoPay)
+    </label>
+
+    <label class="payment-method">
+      <input type="radio" name="metode" value="cod">
+      Bayar di Tempat (COD)
+    </label>
+
+    <label class="payment-method">
+      <input type="radio" name="metode" value="qris">
+      Pembayaran QRIS
+    </label>
+
+    <!-- Tombol Checkout -->
+    <button class="checkout-btn">Lanjutkan Pembayaran</button>
+  </div>
+
+    <section class="content-section" id="about" role="region" aria-labelledby="about-title" tabindex="0" >
+      <img src="gambar steak tahu/stiker logo steak tahu 28 BLACKPAPER.png" alt="Logo" />
+      <h2 id="about-title">Tentang Steak Tahu 28</h2>
+      <p>
+        Steak Tahu 28 berkomitmen untuk menyajikan steak nabati yang lezat dan bergizi yang terbuat dari tahu lokal. Dedikasi kami terhadap kualitas dan cita rasa asli telah menjadikan kami merek yang digemari oleh para pemakan sehat yang mencari alternatif lezat.
+      </p>
+    </section>
+
+    <section class="content-section" id="ranting" role="region" aria-labelledby="ranting-title" tabindex="0" >
+      <p>
+        Kami menyediakan cabang-cabang (ranting) di berbagai daerah, memudahkan akses untuk menikmati Steak Tahu 28. Temukan cabang terdekat dan nikmati hidangan favorit Anda kapan saja.
+      </p>
+
+      <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beri Rating & Ulasan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .review-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .stars {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .star {
+      font-size: 30px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .star.selected {
+      color: #ffc107;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      min-height: 100px;
+      font-size: 14px;
+    }
+
+    .submit-btn {
+      display: block;
+      margin: 15px auto 0;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="review-container">
+    <h2>Beri Rating & Ulasan</h2>
+    
+    <div class="stars" id="rating-stars">
+      <span class="star" data-value="1">&#9733;</span>
+      <span class="star" data-value="2">&#9733;</span>
+      <span class="star" data-value="3">&#9733;</span>
+      <span class="star" data-value="4">&#9733;</span>
+      <span class="star" data-value="5">&#9733;</span>
+    </div>
+
+    <textarea placeholder="Tulis komentar Anda di sini..."></textarea>
+    
+    <button class="submit-btn">Kirim Ulasan</button>
+  </div>
+
+  <script>
+    const stars = document.querySelectorAll('.star');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.getAttribute('data-value'));
+        updateStars();
+      });
+    });
+
+    function updateStars() {
+      stars.forEach(star => {
+        const value = parseInt(star.getAttribute('data-value'));
+        if (value <= selectedRating) {
+          star.classList.add('selected');
+        } else {
+          star.classList.remove('selected');
+        }
+      });
+    }
+  </script>
+  
+    </section>
+
+
+    <section class="content-section" id="lokasi" role="region" aria-labelledby="lokasi-title" tabindex="0" >
+      <h2 id="lokasi-title">Lokasi</h2>
+      <p>
+        Jl. jl.pajajaran kota Bogor, Jawa Barat, Indonesia.<br />
+        Buka setiap hari dari pukul 07.00 hingga 21.00 WIB.
+      </p>
+      <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lokasi Toko</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+    .lokasi-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .lokasi-container h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .alamat {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .btn-maps {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn-maps:hover {
+      background-color: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lokasi-container">
+    <div class="alamat">
+      Jl. Raya Pajajaran, Kota Bogor, Jawa Barat
+    </div>
+    <a href="https://www.google.com/maps?q=Jl.+Raya+Pajajaran,+Kota+Bogor,+Jawa+Barat" target="_blank" class="btn-maps">
+      Lihat di Google Maps
+    </a>
+  </div>
+    </section>
+
+    <section class="content-section" id="contact" role="region" aria-labelledby="contact-title" tabindex="0" >
+      <h2 id="contact-title">Contact</h2>
+      <p>
+        📞 WhatsApp: <a href="https://wa.me/6285777578133" target="_blank">+62 857 7757 8133</a><br>
+        📧 Email: <a href="mailto:dhafaprama8@gmail.com">dhafaprama8@gmail.com</a><br>
+        Follow us on social media to get updates and promotions.
+      </p>
+    </section>
+  </main>
+
+<footer>
+    &copy; 2025 Steak Tahu 28. Crafted with 💛 for Indonesia.
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <aside class="cart-sidebar" id="cart-sidebar" role="dialog" aria-modal="true" aria-labelledby="cart-title" tabindex="-1">
+    <div class="cart-header">
+      <span id="cart-title">Your Cart</span>
+      <button class="cart-close-btn" id="cart-close-btn" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items" tabindex="0" aria-live="polite" aria-relevant="additions removals">
+      <p class="cart-empty" id="cart-empty-msg">Your cart is empty.</p>
+    </div>
+    <div class="cart-footer" aria-live="polite" aria-atomic="true">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cart-total">Rp0</span>
+      </div>
+      <button class="cart-checkout-btn" id="checkout-btn" aria-label="Checkout and complete purchase" disabled>
+        Checkout
+      </button>
+    </div>
+  </aside>
+
+  <div class="overlay" id="cart-overlay" tabindex="-1" hidden></div>
+
+  <script>
+    (() => {
+      const cartToggleBtn = document.getElementById('cart-toggle');
+      const cartSidebar = document.getElementById('cart-sidebar');
+      const cartCloseBtn = document.getElementById('cart-close-btn');
+      const cartOverlay = document.getElementById('cart-overlay');
+      const cartItemsContainer = document.getElementById('cart-items');
+      const cartTotalEl = document.getElementById('cart-total');
+      const cartCountEl = document.getElementById('cart-count');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      const heroOrderBtn = document.getElementById('hero-order-btn');
+
+      let cart = {};
+
+      function formatPrice(number) {
+        // Format number to Indonesian Rupiah format Rp xx.xxx
+        return 'Rp' + number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      }
+
+      function saveCart() {
+        localStorage.setItem('steaktahu28-cart', JSON.stringify(cart));
+      }
+      function loadCart() {
+        try {
+          const stored = localStorage.getItem('steaktahu28-cart');
+          if (stored) {
+            cart = JSON.parse(stored);
+          }
+        } catch(e) {
+          cart = {};
+        }
+      }
+
+      function updateCartCount() {
+        const count = Object.values(cart).reduce((acc, item) => acc + item.quantity, 0);
+        cartCountEl.textContent = count;
+      }
+
+      function calculateTotal() {
+        return Object.values(cart).reduce((acc, item) => acc + item.price * item.quantity, 0);
+      }
+
+      function renderCart() {
+        cartItemsContainer.innerHTML = '';
+        if (Object.keys(cart).length === 0) {
+          cartItemsContainer.appendChild(document.getElementById('cart-empty-msg'));
+          checkoutBtn.disabled = true;
+          cartTotalEl.textContent = formatPrice(0);
+          return;
+        }
+        checkoutBtn.disabled = false;
+        Object.entries(cart).forEach(([id, {name, price, quantity, imageSrc}]) => {
+          const item = document.createElement('div');
+          item.className = 'cart-item';
+          item.tabIndex = 0;
+          item.setAttribute('aria-label', \`\${name}, quantity \${quantity}, price \${formatPrice(price * quantity)}\`);
+
+          const img = document.createElement('img');
+          img.src = imageSrc;
+          img.alt = name;
+          img.className = 'cart-item-image';
+          img.loading = 'lazy';
+
+          const info = document.createElement('div');
+          info.className = 'cart-item-info';
+
+          const title = document.createElement('div');
+          title.className = 'cart-item-name';
+          title.textContent = name;
+
+          const controls = document.createElement('div');
+          controls.className = 'cart-item-controls';
+
+          // Quantity controls
+          const qtyControl = document.createElement('div');
+          qtyControl.className = 'cart-item-quantity';
+
+          const btnDec = document.createElement('button');
+          btnDec.setAttribute('aria-label', \`Decrease quantity of \${name}\`);
+          btnDec.textContent = '−';
+          btnDec.type = 'button';
+          btnDec.addEventListener('click', () => {
+            if (cart[id].quantity > 1) {
+              cart[id].quantity--;
+            } else {
+              delete cart[id];
+            }
+            saveCart();
+            updateCartCount();
+            renderCart();
+          });
+
+          const qtySpan = document.createElement('span');
+          qtySpan.textContent = quantity;
+
+          const btnInc = document.createElement('button');
+          btnInc.setAttribute('aria-label', \`Increase quantity of \${name}\`);
+          btnInc.textContent = '+';
+          btnInc.type = 'button';
+          btnInc.addEventListener('click', () => {
+            cart[id].quantity++;
+            saveCart();
+            updateCartCount();
+            renderCart();
+          });
+
+          qtyControl.appendChild(btnDec);
+          qtyControl.appendChild(qtySpan);
+          qtyControl.appendChild(btnInc);
+
+          // Remove button
+          const btnRemove = document.createElement('button');
+          btnRemove.className = 'cart-item-remove';
+          btnRemove.setAttribute('aria-label', \`Remove \${name} from cart\`);
+          btnRemove.textContent = '×';
+          btnRemove.type = 'button';
+          btnRemove.addEventListener('click', () => {
+            delete cart[id];
+            saveCart();
+            updateCartCount();
+            renderCart();
+          });
+
+          // Price
+          const priceEl = document.createElement('div');
+          priceEl.className = 'cart-item-price';
+          priceEl.textContent = formatPrice(price * quantity);
+
+          controls.appendChild(qtyControl);
+          controls.appendChild(btnRemove);
+          controls.appendChild(priceEl);
+
+          info.appendChild(title);
+          info.appendChild(controls);
+
+          item.appendChild(img);
+          item.appendChild(info);
+
+          cartItemsContainer.appendChild(item);
+        });
+
+        cartTotalEl.textContent = formatPrice(calculateTotal());
+      }
+
+      function addToCart(id, name, price, imageSrc) {
+        if (cart[id]) {
+          cart[id].quantity++;
+        } else {
+          cart[id] = { name, price, quantity: 1, imageSrc };
+        }
+        saveCart();
+        updateCartCount();
+        renderCart();
+        openCart();
+      }
+
+      function openCart() {
+        cartSidebar.classList.add('open');
+        cartOverlay.classList.add('active');
+        cartSidebar.setAttribute('aria-hidden', 'false');
+        cartToggleBtn.setAttribute('aria-expanded', 'true');
+        cartSidebar.focus();
+        document.body.style.overflow = 'hidden';
+      }
+      function closeCart() {
+        cartSidebar.classList.remove('open');
+        cartOverlay.classList.remove('active');
+        cartSidebar.setAttribute('aria-hidden', 'true');
+        cartToggleBtn.setAttribute('aria-expanded', 'false');
+        cartToggleBtn.focus();
+        document.body.style.overflow = '';
+      }
+
+      function setupEventListeners() {
+        cartToggleBtn.addEventListener('click', () => {
+          if (cartSidebar.classList.contains('open')) {
+            closeCart();
+          } else {
+            openCart();
+          }
+        });
+        cartCloseBtn.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', closeCart);
+
+        // Close cart with Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && cartSidebar.classList.contains('open')) {
+            e.preventDefault();
+            closeCart();
+          }
+        });
+
+        // Add to Cart buttons
+        document.querySelectorAll('.add-to-cart-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const id = btn.dataset.id;
+            const name = btn.dataset.name;
+            const price = Number(btn.dataset.price);
+            const img = btn.closest('.product-card').querySelector('.product-image').src;
+            addToCart(id, name, price, img);
+          });
+        });
+
+        // Hero order button scrolls to menu
+        heroOrderBtn.addEventListener('click', () => {
+          document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Checkout button simulation
+        checkoutBtn.addEventListener('click', () => {
+          if (Object.keys(cart).length === 0) return;
+          alert('Thank you for your purchase! Your order has been placed.');
+          cart = {};
+          saveCart();
+          updateCartCount();
+          renderCart();
+          closeCart();
+        });
+      }
+
+      // Initialization
+      function init() {
+        loadCart();
+        updateCartCount();
+        renderCart();
+        setupEventListeners();
+        cartSidebar.setAttribute('aria-hidden', 'true');
+      }
+
+      init();
+    })();
+  </script>
+</body>
+</html>
+
